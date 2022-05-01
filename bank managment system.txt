@@ -555,7 +555,7 @@ void intro()
 	cout << "\n\t\t\t\t************************************************";
 	cout << "\n\t\t\t\t              bank managment system.";
 	cout << "\n\t\t\t\t************************************************";
-	cout << "\n\n\n\n\MADE BY :\n 1.omarkhaled \n 2.eslam nader\n 3.philopater herz\n 4.mohamed ahmed\n";
+	cout << "\n\n\n\n\MADE BY :\n 1.omarkhaled\n";
 	cout << "\n Galala university";
 
 	cout << "\n\n\t\t\t\t             ( please enter any key)";
