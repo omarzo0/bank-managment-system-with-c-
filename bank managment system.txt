@@ -1,0 +1,563 @@
+#include <iostream>
+#include <string>
+#include<fstream>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+void createAccount();
+float* balanceEnquiry();
+void accountHolderList();
+void updateAmount(float amount);
+void closeAccount();
+void modifyAccount(string name, char status);
+void intro();
+float amount;
+
+int main()
+{
+	intro();
+	system("cls");
+	string name;
+	char status;
+	int choice = 0;
+
+	cout << "\n\t\t\t\t===============================================";
+	cout << "\n\t\t\t\t                   main menu             ";
+	cout << "\n\t\t\t\t===============================================\n\n\n";
+	cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+	while (choice != 8)
+	{
+		cin >> choice;
+		switch (choice)
+		{
+		case  1:
+		{
+			cout << "your choice is NEW ACCOUNT" << endl;
+			createAccount();
+			cout << "\n\t\t\t\t===============================================";
+			cout << "\n\t\t\t\t                   main menu             ";
+			cout << "\n\t\t\t\t===============================================\n\n\n";
+			cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+			break;
+		}
+		case 2:
+		{
+			system("cls");
+			cout << "please enter the amount\n";
+			cin >> amount;
+			if (amount < 0)
+			{
+				cout << "operation denied, please enter positive amount, Please enter number from<1-7> or press 8 to exit " << endl;
+				break;
+			}
+			updateAmount(amount);
+			cout << "\n\t\t\t\t===============================================";
+			cout << "\n\t\t\t\t                   main menu             ";
+			cout << "\n\t\t\t\t===============================================\n\n\n";
+			cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+			break;
+		}
+		case 3:
+		{
+			system("cls");
+			cout << "please enter the amount\n";
+			cin >> amount;
+			if (amount < 0)
+			{
+				cout << "operation denied, please enter positive amount, Please enter number from<1-7> or press 8 to exit " << endl;
+				break;
+			}
+			updateAmount(-amount);
+			cout << "\n\t\t\t\t===============================================";
+			cout << "\n\t\t\t\t                   main menu             ";
+			cout << "\n\t\t\t\t===============================================\n\n\n";
+			cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+			break;
+		}
+		case 4:
+		{
+			cout << "your choice is BALANCE ENQUIRY" << endl;
+			balanceEnquiry();
+			cout << "\n\t\t\t\t===============================================";
+			cout << "\n\t\t\t\t                   main menu             ";
+			cout << "\n\t\t\t\t===============================================\n\n\n";
+			cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+			break;
+		}
+		case 5:
+		{
+			accountHolderList();
+			cout << "\n\t\t\t\t===============================================";
+			cout << "\n\t\t\t\t                   main menu             ";
+			cout << "\n\t\t\t\t===============================================\n\n\n";
+			cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+			break;
+		}
+		case 6:
+		{
+			cout << "your choice is CLOSE AN ACCOUNT";
+			closeAccount();
+
+			cout << "\n\t\t\t\t===============================================";
+			cout << "\n\t\t\t\t                   main menu             ";
+			cout << "\n\t\t\t\t===============================================\n\n\n";
+			cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+			break;
+		}
+		case 7:
+		{
+			cout << "your choice is  MODIFY AN ACCOUNT";
+			cout << "enter account status A or I :" << endl;
+			cin >> status;
+			cout << "enter your new name: " << endl;
+			cin >> name;
+
+			modifyAccount(name, status);
+			cout << "\n\t\t\t\t===============================================";
+			cout << "\n\t\t\t\t                   main menu             ";
+			cout << "\n\t\t\t\t===============================================\n\n\n";
+			cout << " 01. NEW ACCOUNT \n 02. DEPOSIT AMOUNT \n 03. WITHDRAW AMOUNT \n 04. BALANCE ENQUIRY \n 05. ALL ACCOUNT  HOLDER LIST  \n 06. CLOSE AN ACCOUNT \n 07. MODIFY AN ACCOUNT \n 08. CLOSE \n \n \n plase select number between <1-8>" << endl;
+
+			break;
+		}
+		case 8:
+		{
+			cout << "\n\t\t\t\t===========================================================";
+			cout << "\n\t\t\t\t         thank you for using our banking system";
+			cout << "\n\t\t\t\t===========================================================\n\n\n";
+			break;
+		}
+		default:
+		{
+			cout << "plase enter number between <1-8>" << endl;
+
+		}
+
+
+
+		}
+
+	}
+
+
+}
+void createAccount()
+{
+	system("cls");
+	int i, accountNumber, balance;
+	string accountName;
+	// file pointer
+	fstream fAccount;
+
+	// opens an existing csv file or creates a new file.
+	fAccount.open("accounts.csv", ios::out | ios::app);
+
+	cout << "Enter the details of the account\n\n";
+	cout << " please enter the account number :" << endl;
+	cin >> accountNumber;
+	cout << "please enter the account name :" << endl;
+	cin >> accountName;
+	cout << "please enter the inital balance :" << endl;
+	cin >> balance;
+
+
+
+	cout << "\n\t\t\t\t==============================================================";
+	cout << "\n\t\t\t\t           the account has been succesfully created";
+	cout << "\n\t\t\t\t==============================================================\n\n\n";
+
+	cout << "\n\n\nyour information is:\n";
+	cout << "your fullname is " << accountName << endl;
+	cout << "your account number is " << accountNumber << endl;
+	cout << "your initial balance is " << balance << endl;
+
+
+	// Insert the data to file
+	fAccount << ", ,active, " << accountNumber << ","
+		<< accountName << ","
+		<< balance << "\n";
+	fAccount.close();
+	
+}
+float* balanceEnquiry()
+{
+	//system("cls");
+	float  balance[] = { -1,-1 };
+
+	// File pointer
+	fstream fin;
+
+	// Open an existing file
+	fin.open("accounts.csv", ios::in);
+
+	// Get the account number
+	// of which the data is required
+	int accountNumber, check, count = 0, lineNumber = 0;
+	cout << "Enter the account number "
+		<< "of the account to display details: ";
+	cin >> accountNumber;
+
+
+	// Read the Data from the file
+	// as String Vector
+	vector<string> row;
+	string line, word, temp;
+
+	while (fin >> temp)
+	{
+		lineNumber++;
+
+		row.clear();
+
+		// read an entire row and
+		// store it in a string variable 'line'
+		getline(fin, line);
+
+		// used for breaking words
+		std::stringstream s(line);
+
+		// read every column data of a row and
+		// store it in a string variable, 'word'
+
+		while (getline(s, word, ','))
+		{
+
+			// add all the column data
+			// of a row to a vector
+			row.push_back(word);
+		}
+
+		// convert string to integer for comparision
+		check = stoi(row[2]);
+
+		// Compare the check
+		if (check == accountNumber)
+		{
+			// Print the found data
+			count = 1;
+			cout << "account status: " << row[1] << endl;
+			cout << "Hello " << row[3] << "  \n";
+			cout << "Your account number: " << row[2] << "\n";
+			cout << "Has balance of : " << row[4];
+			balance[1] = stof(row[4]);
+			balance[0] = stof(row[2]);
+			return balance;
+
+
+		}
+
+	}
+	if (count == 0)
+	{
+		cout << "There is no account that match your account number\n";
+		return balance;
+
+	}
+
+}
+void accountHolderList()
+{
+
+	system("cls");
+	// File pointer
+	fstream fin;
+
+	// Open an existing file
+	fin.open("accounts.csv", ios::in);
+
+
+
+	// Read the Data from the file
+	// as String Vector
+	vector<string> row;
+	string line, word, temp;
+
+	while (fin >> temp) {
+
+
+		row.clear();
+
+		// read an entire row and
+		// store it in a string variable 'line'
+		getline(fin, line);
+
+		// used for breaking words
+		std::stringstream s(line);
+
+		// read every column data of a row and
+		// store it in a string variable, 'word'
+
+		while (getline(s, word, ','))
+		{
+
+			// add all the column data
+			// of a row to a vector
+			row.push_back(word);
+		}
+
+
+
+
+		// Print the found data
+		cout << endl << "Account status: " << row[1] << endl;
+		cout << "Hello " << row[3] << "  \n";
+		cout << "Your account number: " << row[2] << endl;
+		cout << "Has balance of : " << row[4] << endl;
+		cout << "---------------------------------------";
+
+
+	}
+
+}
+void updateAmount(float amount)
+{
+	system("cls");
+	float* depositBalance = new float[2];
+	depositBalance = balanceEnquiry();
+	float temp0 = depositBalance[0], temp1 = depositBalance[1];
+	if ((temp0 > 0) && (temp1 + amount >= 0))
+	{
+
+		temp1 = temp1 + amount;
+		cout << endl << "your new balance is :" << temp1;
+		fstream fin, fout;
+		fin.open("accounts.csv", ios::in);
+		fout.open("newaccounts.csv", ios::out);
+		vector<string> row;
+		string line, word;
+
+		while (!fin.eof())
+		{
+			row.clear();
+
+			getline(fin, line);
+			stringstream s(line);
+
+			while (getline(s, word, ','))
+			{
+				row.push_back(word);
+			}
+			if (!fin.eof())
+			{
+				for (int i = 0; i < 5; i++)
+				{
+
+					// write the updated data
+					// into a new file 'newaccounts.csv'
+					// using fout
+					// write the first 3 values unchanged
+
+					fout << row[i] << ",";
+				}
+
+				if ((temp0 == stof(row[3])) && (row[2] == "active"))
+				{
+					// update the balance 
+					fout << temp1;
+				}
+				else if (row[2] == "inactive")
+				{
+					fout << row[5];
+					cout << endl << "your can not perform an action on an inactive account " << endl;
+					fin.close();
+					fout.close();
+					remove("accounts.csv");
+					rename("newaccounts.csv", "accounts.csv");
+					return;
+				}
+				else
+				{
+
+					fout << row[5];
+				}
+				fout << endl;
+			}
+
+
+			if (fin.eof())
+				break;
+
+		}
+		fin.close();
+		fout.close();
+		remove("accounts.csv");
+		rename("newaccounts.csv", "accounts.csv");
+	}
+	else if (temp1 + amount < 0)
+	{
+		cout << endl << "you can not withdraw amount more your account balance" << endl;
+
+	}
+
+
+}
+void closeAccount()
+{
+	system("cls");
+	float* depositBalance = new float[2];
+	depositBalance = balanceEnquiry();
+	float temp0 = depositBalance[0], temp1 = depositBalance[1];
+	if (temp0 > 0)
+	{
+		fstream fin, fout;
+		fin.open("accounts.csv", ios::in);
+		fout.open("newaccounts.csv", ios::out);
+		vector<string> row;
+		string line, word;
+
+		while (!fin.eof())
+		{
+			row.clear();
+
+			getline(fin, line);
+			stringstream s(line);
+
+			while (getline(s, word, ','))
+			{
+				row.push_back(word);
+			}
+			if (!fin.eof())
+			{
+				if (temp0 != stof(row[3]))
+				{
+					for (int i = 0; i < 5; i++)
+					{
+
+						// write the updated data
+						// into a new file 'newaccounts.csv'
+						// using fout
+						// write the first 3 values unchanged
+
+						fout << row[i] << ", ";
+					}
+					fout << row[5];
+					fout << endl;
+				}
+
+
+			}
+
+
+			if (fin.eof())
+				break;
+
+		}
+
+		cout << endl << "your account has been deleted" << endl;
+
+
+		fin.close();
+		fout.close();
+		remove("accounts.csv");
+		rename("newaccounts.csv", "accounts.csv");
+
+	}
+
+
+}
+void modifyAccount(string name, char status)
+{
+	system("cls");
+	float* depositBalance = new float[2];
+	int i = 0;
+	cout << endl << "your old data is: " << endl;
+	depositBalance = balanceEnquiry();
+	float temp0 = depositBalance[0];
+	if (temp0 > 0)
+	{
+
+
+		fstream fin, fout;
+		fin.open("accounts.csv", ios::in);
+		fout.open("newaccounts.csv", ios::out);
+		vector<string> row;
+		string line, word;
+
+		while (!fin.eof())
+		{
+			row.clear();
+
+			getline(fin, line);
+			stringstream s(line);
+
+			while (getline(s, word, ','))
+			{
+				row.push_back(word);
+			}
+			if (!fin.eof())
+			{
+				if (temp0 == stof(row[3]))
+				{
+					// update the status
+					if (status == 'a' || status == 'A')
+					{
+
+						fout << ", ,active" << ",";
+					}
+
+					else if (status == 'i' || status == 'I')
+					{
+
+						fout << ", ,inactive" << ",";
+					}
+					i = i + 3;
+
+					fout << row[i] << ",";
+					fout << name << ",";
+					i = i + 2;
+					fout << row[i];
+
+
+				}
+
+				else
+				{
+					for (i = 0; i < 5; i++)
+					{
+						fout << row[i] << ",";
+					}
+
+				}
+				i = 0;
+				// write the updated data
+				// into a new file 'newaccounts.csv'
+				// using fout
+				// write the first 3 values unchanged
+
+
+
+
+				fout << endl;
+			}
+
+
+			if (fin.eof())
+				break;
+
+		}
+		fin.close();
+		fout.close();
+		remove("accounts.csv");
+		rename("newaccounts.csv", "accounts.csv");
+	}
+}
+void intro()
+{
+	cout << "\n\t\t\t\t************************************************";
+	cout << "\n\t\t\t\t              bank managment system.";
+	cout << "\n\t\t\t\t************************************************";
+	cout << "\n\n\n\n\MADE BY :\n 1.omarkhaled \n 2.eslam nader\n 3.philopater herz\n 4.mohamed ahmed\n";
+	cout << "\n Galala university";
+
+	cout << "\n\n\t\t\t\t             ( please enter any key)";
+	cin.get();
+}
